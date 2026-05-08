@@ -39,7 +39,7 @@ msgtime <- local({backup <- list();
         unlockBinding("message", baseenv())
         assign("message",
                function(..., domain = NULL, appendLF = TRUE){
-                 timestamp <- paste0("[",as.character(Sys.time()),"] ")
+                 timestamp <- paste0("[", format(Sys.time(), digits = 2), "] ")
                  backup$message(timestamp, appendLF=FALSE)
                  args <- list(...)
                  if(!missing(domain)) args$domain <- domain
@@ -53,7 +53,7 @@ msgtime <- local({backup <- list();
         assign("warning",
                function(..., call. = TRUE, immediate. = FALSE, noBreaks. = FALSE,
                         domain = NULL){
-                 timestamp <- paste0("[",as.character(Sys.time()),"] ")
+                 timestamp <- paste0("[", format(Sys.time(), digits = 2), "] ")
                  args <- list(timestamp, ...)
                  if(!missing(call.)) args$call. <- call.
                  if(!missing(immediate.)) args$immediate. <- immediate.
@@ -68,7 +68,7 @@ msgtime <- local({backup <- list();
         unlockBinding("stop", baseenv())
         assign("stop",
                function(..., call. = TRUE, domain = NULL){
-                 timestamp <- paste0("[",as.character(Sys.time()),"] ")
+                 timestamp <- paste0("[", format(Sys.time(), digits = 2), "] ")
                  args <- list(timestamp, ...)
                  if(!missing(call.)) args$call. <- call.
                  if(!missing(domain)) args$domain <- domain
